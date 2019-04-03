@@ -4,8 +4,14 @@ import (
   "github.com/PuerkitoBio/goquery"
   "fmt"
   "net/http"
-
+  "encoding/json"
+  // "bytes"
 )
+
+type Pagedata struct {
+	URL   []string
+}
+
 
 func GetPage(url string) ([]string) {
   var array []string
@@ -22,14 +28,40 @@ func GetPage(url string) ([]string) {
 func handler(w http.ResponseWriter, r *http.Request) {
   url := "https://twitter.com/search?q=%23%E3%83%AD%E3%82%A2%E3%83%BC%E3%83%88&src=typeahead_click"
   pagedata := GetPage(url)
-  fmt.Fprintf(w, "pagedata")      // Hello, Worldってアクセスした人に返すよ！
-  fmt.Println(pagedata)
+
+  pages := Pagedata{pagedata}
+
+	// var buf bytes.Buffer
+	res, err := json.Marshal(pages)
+
+  if err != nil {
+      http.Error(w, err.Error(), http.StatusInternalServerError)
+      return
+  }
+
+  w.Header().Set("Content-Type", "application/json")
+  w.Write(res)
+  //
+	// buf.Write(b)
+	// println(buf.String())
+  //
+  //
+  // res, err := json.Marshal(ping)
+  //
+  // if err != nil {
+  //     http.Error(w, err.Error(), http.StatusInternalServerError)
+  //     return
+  // }
+
+  // w.Header().Set("Content-Type", "application/json")
+  // w.Write(res)
+
+
+  // fmt.Fprintf(w, pagedata)      // Hello, Worldってアクセスした人に返すよ！
+  // fmt.Println(pagedata)
 }
 
 func main() {
-
-  // url = "https://www.google.co.jp/search?q=%E5%A4%A2%E8%A6%8B%E3%82%8A%E3%81%82%E3%82%80&rlz=1C5CHFA_enJP788JP790&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiruY_a487gAhVOMt4KHbc6DzgQ_AUIDigB&biw=1440&bih=765"
-  // GetPage(url)
 
   http.HandleFunc("/", handler)       // http://localhost:8080/にアクセスしてきた人はhandlerを実行するよ！
   fmt.Printf("server is running\n")
