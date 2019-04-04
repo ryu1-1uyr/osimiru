@@ -23,7 +23,7 @@ func GetPage(url string) ([]string) {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-  url := "https://twitter.com/search?q=%23%E3%83%AD%E3%82%A2%E3%83%BC%E3%83%88&src=typeahead_click"//任意のurl取れるように改造したい
+  url := "https://twitter.com/hashtag/%E4%BB%8A%E6%97%A5%E3%81%AEjogo?src=hashtag_click"//任意のurl取れるように改造したい
   pagedata := GetPage(url)
 
   pages := Pagedata{pagedata}

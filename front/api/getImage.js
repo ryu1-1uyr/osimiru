@@ -21,6 +21,7 @@
 // export default getimageAPI;
 
 import axios from 'axios'
+const elements = "https://pbs.twimg.com/media";
 
 class DogApi {
   constructor() {
@@ -30,6 +31,7 @@ class DogApi {
   breeds() {
     return axios.get(`${this.apiBase}`)
       .then(json =>json.data)
+      // .then(url => url.indexOf(elements) === 0 ? i : ''  )
       .catch(e => ({ error: e }));
   }
 

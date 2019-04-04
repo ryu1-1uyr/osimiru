@@ -2,12 +2,10 @@
   <section class="container">
     <div class="columns is-multiline">
 
-      <!-- v-for で breed_list からループ出力　mapstateで名前をさぶすてーとと揃えた時は直接呼べるっぽい -->
       <div v-for="(i) in breed_list.URL" v-bind:key='i'>
-        <img :src="i" >
+        <img :src="shaping(i)" >
       </div>
 
-      <!--<p>{{breed_list.URL}}</p><img :src="breed_list.image" >-->
     </div>
   </section>
 </template>
@@ -17,15 +15,24 @@
   import dogApi from '@/api/getImage'
   import {mapState} from 'vuex'
 
+  const elements = "https://pbs.twimg.com/media"
+
+
   export default {
     async fetch({store}) {
       let json = await dogApi.breeds();
-      store.commit('breed_list_update', json)//axiosで取ってきたjsonをデータストアにのっける
+      store.commit('breed_list_update', json)
     },
     computed: mapState(['breed_list']),
-    // 複雑なロジックには算出プロパティを使うべきらしいのでmethodじゃなくてcomputedつかう(https://jp.vuejs.org/v2/guide/computed.html)
-    // mapState ヘルパー vuexで作ったデータストアなのでvuexのめそっどから呼んでるよ
-    //ステートサブツリーの名前と同じ場合は、文字列配列を mapState に渡すこともできますらしいです
+
+    methods: {
+      shaping (url) {
+        if(url.indexOf(elements) === 0){
+          return url
+        }
+      }
+    }
+
   }
 </script>
 
