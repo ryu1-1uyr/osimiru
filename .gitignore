@@ -1,0 +1,12 @@
+# dependencies
+front/node_modules
+
+# logs
+front/npm-debug.log
+
+# Nuxt build
+front/.nuxt
+
+# Nuxt generate
+front/dist
+front/.idea
