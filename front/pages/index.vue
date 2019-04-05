@@ -2,7 +2,7 @@
   <section class="container">
     <div class="columns is-multiline">
 
-      <div v-for="(i) in breed_list.URL" v-bind:key='i'>
+      <div v-for="(i) in url_list.URL" v-bind:key='i'>
         <img :src="shaping(i)" >
       </div>
 
@@ -12,7 +12,7 @@
 
 
 <script>
-  import dogApi from '@/api/getImage'
+  import getImageAPI from '@/api/getImage'
   import {mapState} from 'vuex'
 
   const elements = "https://pbs.twimg.com/media"
@@ -20,10 +20,10 @@
 
   export default {
     async fetch({store}) {
-      let json = await dogApi.breeds();
-      store.commit('breed_list_update', json)
+      let json = await getImageAPI.osiGet();
+      store.commit('url_list_update', json)
     },
-    computed: mapState(['breed_list']),
+    computed: mapState(['url_list']),
 
     methods: {
       shaping (url) {
