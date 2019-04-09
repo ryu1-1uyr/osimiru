@@ -1,3 +1,7 @@
 {
-    "url": []
+    "url": [
+      "https://twitter.com/search?q=%23%E3%83%AD%E3%82%A2%E3%83%BC%E3%83%88&src=typeahead_click",
+      "https://twitter.com/search?q=%23%E3%81%A1%E3%81%A8%E3%81%9B%E3%81%A6%E3%82%93%E3%81%94%E3%81%8F&src=hashtag_click",
+      "https://twitter.com/hashtag/%E3%81%84%E3%81%AC%E3%81%84%E3%82%89%E3%81%99%E3%81%A8?src=hashtag_click"
+    ]
 }
