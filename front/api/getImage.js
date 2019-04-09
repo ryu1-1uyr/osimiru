@@ -14,5 +14,4 @@ class ImageAPI {
 }
 
 const imageAPI = new ImageAPI();
-
 export default imageAPI;

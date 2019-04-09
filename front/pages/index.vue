@@ -17,7 +17,6 @@
 
   const elements = "https://pbs.twimg.com/media"
 
-
   export default {
     async fetch({store}) {
       let json = await getImageAPI.osiGet();
