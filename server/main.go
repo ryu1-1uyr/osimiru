@@ -5,10 +5,13 @@ import (
   "fmt"
   "net/http"
   "encoding/json"
+  // simplejson "go-simplejson"
+  // "io/ioutil"
+  // "github.com/bitly/go-simplejson"
 )
 
 type Pagedata struct { //jsonの構造
-	URL   []string
+  URL   []string
 }
 
 func GetPage(url string) ([]string) {
@@ -24,15 +27,15 @@ func GetPage(url string) ([]string) {
 
 func handler(w http.ResponseWriter, r *http.Request) {
   url := "https://twitter.com/search?q=%23%E3%83%AD%E3%82%A2%E3%83%BC%E3%83%88&src=typeahead_click"//任意のurl取れるように改造したい
-  pagedata := GetPage(url)
 
+  pagedata := GetPage(url)
   pages := Pagedata{pagedata}
 
-	res, err := json.Marshal(pages)
+  res, err := json.Marshal(pages)
 
   if err != nil {
-      http.Error(w, err.Error(), http.StatusInternalServerError)
-      return
+    http.Error(w, err.Error(), http.StatusInternalServerError)
+    return
   }
 
   w.Header().Set("Content-Type", "application/json")
@@ -41,8 +44,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
   http.HandleFunc("/", handler)       // http://localhost:8080/にアクセスしてきた人はhandlerを実行するよ！
   fmt.Printf("server is running\n")
   http.ListenAndServe(":8080", nil)   // サーバーを起動するよ！
+
 }

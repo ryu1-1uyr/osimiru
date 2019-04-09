@@ -3,11 +3,11 @@ import Vuex from 'vuex'
 const appStore = () => {
   return new Vuex.Store({
     state: {
-      breed_list: {},
+      url_list: {},
     },
     mutations: {
-      breed_list_update(state, payload) {
-        state.breed_list = {...payload}
+      url_list_update(state, payload) {
+        state.url_list = {...payload}
       },
 
     }

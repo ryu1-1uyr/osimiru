@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-class DogApi {
+class ImageAPI {
   constructor() {
     this.apiBase = 'http://localhost:8080/';
   }
 
-  breeds() {
+  osiGet() {
     return axios.get(`${this.apiBase}`)
       .then(json =>json.data)
       .catch(e => ({ error: e }));
@@ -13,6 +13,5 @@ class DogApi {
 
 }
 
-const dogApi = new DogApi();
-
-export default dogApi;
+const imageAPI = new ImageAPI();
+export default imageAPI;
