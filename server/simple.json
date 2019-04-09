@@ -1,7 +1,3 @@
 {
-    "hoge": true,
-    "piyo":{
-        "foo":[1,2],
-        "bar":"test"
-    }
+    "url": []
 }
