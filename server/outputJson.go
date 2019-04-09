@@ -1,7 +1,6 @@
 package main
 
 import (
-  "github.com/PuerkitoBio/goquery"
   "fmt"
   "net/http"
   "encoding/json"
@@ -31,5 +30,8 @@ http.HandleFunc("/test", func (w http.ResponseWriter, r *http.Request) {
   w.Write(res)
 
 })
+// http://localhost:8080/にアクセスしてきた人はhandlerを実行するよ！
+fmt.Printf("server is running\n")
+http.ListenAndServe(":8080", nil)   // サーバーを起動するよ！
 
 }
