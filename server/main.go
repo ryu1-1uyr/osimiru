@@ -25,8 +25,44 @@ func GetPage(url string) ([]string) {
   return array
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func handlerRoa(w http.ResponseWriter, r *http.Request) {
   url := "https://twitter.com/search?q=%23%E3%83%AD%E3%82%A2%E3%83%BC%E3%83%88&src=typeahead_click"//任意のurl取れるように改造したい
+
+  pagedata := GetPage(url)
+  pages := Pagedata{pagedata}
+
+  res, err := json.Marshal(pages)
+
+  if err != nil {
+    http.Error(w, err.Error(), http.StatusInternalServerError)
+    return
+  }
+
+  w.Header().Set("Content-Type", "application/json")
+  w.Write(res)
+
+}
+
+func handlerToko(w http.ResponseWriter, r *http.Request) {
+  url := "https://twitter.com/hashtag/%E3%81%84%E3%81%AC%E3%81%84%E3%82%89%E3%81%99%E3%81%A8?src=hashtag_click"//任意のurl取れるように改造したい
+
+  pagedata := GetPage(url)
+  pages := Pagedata{pagedata}
+
+  res, err := json.Marshal(pages)
+
+  if err != nil {
+    http.Error(w, err.Error(), http.StatusInternalServerError)
+    return
+  }
+
+  w.Header().Set("Content-Type", "application/json")
+  w.Write(res)
+
+}
+
+func handlerGibara(w http.ResponseWriter, r *http.Request) {
+  url := "https://twitter.com/hashtag/%E3%81%88%E3%82%89%E3%81%99%E3%81%A8%E3%82%84?src=hashtag_click"//任意のurl取れるように改造したい
 
   pagedata := GetPage(url)
   pages := Pagedata{pagedata}
