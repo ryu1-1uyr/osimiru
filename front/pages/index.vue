@@ -2,6 +2,10 @@
   <section class="container">
     <div class="columns is-multiline">
 
+      <dvi style="padding-top: 20px;margin: auto">
+        <a @click="setOsi('roa')">ろあ</a><a @click="setOsi('toko')">いぬい</a> <a @click="setOsi('gibara')">えら</a>
+      </dvi>
+
       <div v-for="(i) in url_list.URL" v-bind:key='i'>
         <img :src="shaping(i)" >
       </div>
@@ -20,7 +24,8 @@
   export default {
     data () {
       return {
-        url : "http://localhost:8080/roa"
+        url : "http://localhost:8080/",
+        osiName: ""
       }
     },
     async fetch({store}) {
@@ -35,14 +40,21 @@
           return url
         }
       },
-      async switchImages ({store}) {
 
-          let json = await getImageAPI.osiget(this.data.url);
-          store.commit('url_list_update', json)
+      async switchImages () {
 
+          let json = await getImageAPI.osiget(this.url + this.osiName);
+        this.$store.commit('url_list_update', json)
 
+      },
 
+      setOsi (name) {
+        this.osiName = name;
+        console.log(name)
+
+        this.switchImages()
       }
+
     }
 
   }
