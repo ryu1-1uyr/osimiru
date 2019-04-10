@@ -18,8 +18,13 @@
   const elements = "https://pbs.twimg.com/media"
 
   export default {
+    data () {
+      return {
+        url : "http://localhost:8080/roa"
+      }
+    },
     async fetch({store}) {
-      let json = await getImageAPI.osiGet();
+      let json = await getImageAPI.initialGet();
       store.commit('url_list_update', json)
     },
     computed: mapState(['url_list']),
@@ -29,6 +34,14 @@
         if(url.indexOf(elements) === 0){
           return url
         }
+      },
+      async switchImages ({store}) {
+
+          let json = await getImageAPI.osiget(this.data.url);
+          store.commit('url_list_update', json)
+
+
+
       }
     }
 
