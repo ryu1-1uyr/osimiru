@@ -2,7 +2,7 @@ import axios from 'axios'
 
 class ImageAPI {
   constructor() {
-    this.apiBase = 'http://localhost:8080/';
+    this.apiBase = 'http://localhost:8080/roa';
   }
 
   osiGet() {
