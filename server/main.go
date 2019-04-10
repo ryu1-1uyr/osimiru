@@ -80,7 +80,10 @@ func handlerGibara(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-  http.HandleFunc("/", handler)       // http://localhost:8080/にアクセスしてきた人はhandlerを実行するよ！
+  http.HandleFunc("/roa", handlerRoa)       // http://localhost:8080/にアクセスしてきた人はhandlerを実行するよ！
+  http.HandleFunc("/toko", handlerToko)
+  http.HandleFunc("/gibara", handlerGibara)
+
   fmt.Printf("server is running\n")
   http.ListenAndServe(":8080", nil)   // サーバーを起動するよ！
 
