@@ -48,7 +48,7 @@
 
       async switchImages () {
 
-          let json = await getImageAPI.osiget(this.url + this.osiName);
+        let json = await getImageAPI.osiget(this.url + this.osiName);
         this.$store.commit('url_list_update', json)
 
       },

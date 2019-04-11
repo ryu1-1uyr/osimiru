@@ -29,6 +29,7 @@ http.HandleFunc("/test", func (w http.ResponseWriter, r *http.Request) {
   w.Header().Set("Content-Type", "application/json")
   w.Write(res)
 
+
 })
 // http://localhost:8080/にアクセスしてきた人はhandlerを実行するよ！
 // fmt.Printf("server is running\n")

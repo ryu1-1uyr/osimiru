@@ -5,9 +5,6 @@ import (
   "fmt"
   "net/http"
   "encoding/json"
-  // simplejson "go-simplejson"
-  // "io/ioutil"
-  // "github.com/bitly/go-simplejson"
 )
 
 type Pagedata struct { //jsonの構造
@@ -93,7 +90,7 @@ func main() {
   http.HandleFunc("/toko", handlerToko)
   http.HandleFunc("/gibara", handlerGibara)
 
-  fmt.Printf("server is running\n")
+  fmt.Printf("server is running\n　8080port")
   http.ListenAndServe(":8080", nil)   // サーバーを起動するよ！
 
 }
