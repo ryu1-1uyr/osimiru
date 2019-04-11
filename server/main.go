@@ -38,6 +38,9 @@ func handlerRoa(w http.ResponseWriter, r *http.Request) {
     return
   }
 
+  //*は危険なので個別指定にしておくのが良さそう fixme
+  w.Header().Set("Access-Control-Allow-Origin", "*")
+
   w.Header().Set("Content-Type", "application/json")
   w.Write(res)
 
@@ -56,6 +59,9 @@ func handlerToko(w http.ResponseWriter, r *http.Request) {
     return
   }
 
+  //*は危険なので個別指定にしておくのが良さそう fixme
+  w.Header().Set("Access-Control-Allow-Origin", "*")
+
   w.Header().Set("Content-Type", "application/json")
   w.Write(res)
 
@@ -73,6 +79,9 @@ func handlerGibara(w http.ResponseWriter, r *http.Request) {
     http.Error(w, err.Error(), http.StatusInternalServerError)
     return
   }
+
+  //*は危険なので個別指定にしておくのが良さそうだとおもいました fixme
+  w.Header().Set("Access-Control-Allow-Origin", "*")
 
   w.Header().Set("Content-Type", "application/json")
   w.Write(res)
