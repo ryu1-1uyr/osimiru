@@ -6,7 +6,7 @@ class ImageAPI {
   }
 
   initialGet() {
-    return axios.get(`${this.apiBase}`)
+    return axios.get(this.apiBase)
       .then(json =>json.data)
       .catch(e => ({ error: e }));
   }
