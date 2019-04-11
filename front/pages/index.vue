@@ -1,10 +1,14 @@
 <template>
-  <section class="container">
-    <div class="columns is-multiline">
 
-      <dvi style="padding-top: 20px;margin: auto">
-        <a @click="setOsi('roa')">ろあ</a><a @click="setOsi('toko')">いぬい</a> <a @click="setOsi('gibara')">えら</a>
-      </dvi>
+<div>
+
+  <dvi style="padding-top: 20px;margin: auto">
+    <a @click="setOsi('roa')">ろあ</a> <a @click="setOsi('toko')">いぬい</a> <a @click="setOsi('gibara')">えら</a>
+  </dvi>
+
+  <section class="container">
+
+    <div class="columns is-multiline" style="margin-top: 40px;">
 
       <div v-for="(i) in url_list.URL" v-bind:key='i'>
         <img :src="shaping(i)" >
@@ -12,6 +16,7 @@
 
     </div>
   </section>
+</div>
 </template>
 
 
