@@ -11,7 +11,9 @@
     <div class="columns is-multiline" style="margin-top: 40px;">
 
       <div v-for="(i) in url_list.URL" v-bind:key='i'>
-        <img :src="shaping(i)" >
+        <a :href="shaping(i)">
+          <img :src="shaping(i)" >
+        </a>
       </div>
 
     </div>
